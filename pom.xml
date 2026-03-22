@@ -18,7 +18,7 @@
 
     <properties>
         <java.version>21</java.version>
-        <github.repository>Dariusz95/PoorBetApplication</github.repository>
+        <github.repository>Dariusz95/PoorBetCommons</github.repository>
     </properties>
 
     <distributionManagement>
