@@ -1,12 +1,10 @@
 package com.poorbet.commons.rabbit.events.match.dto;
 
-import lombok.AllArgsConstructor;
-
 import java.util.UUID;
 
-@AllArgsConstructor
-public class MatchResultEventDto {
-    UUID id;
-    int homeGoals;
-    int awayGoals;
+public record MatchResultEventDto(
+        UUID matchId,
+        int homeGoals,
+        int awayGoals
+) {
 }
