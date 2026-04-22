@@ -1,2 +1,3 @@
 com.poorbet.commons.security.PoorbetSecurityAutoConfiguration
 com.poorbet.commons.auth.config.AuthWebClientConfiguration
+com.poorbet.commons.rabbit.EventRegistryAutoConfiguration

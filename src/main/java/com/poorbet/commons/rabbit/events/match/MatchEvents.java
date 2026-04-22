@@ -6,9 +6,9 @@ public class MatchEvents {
 
     public static final EventDefinition<MatchesFinishedEvent> MATCH_FINISHED =
             new EventDefinition<>(
+                    "match.events",
                     "match.finished",
-                    "v1",
-                    "match.finished.v1"
+                    "v1"
             );
 
     private MatchEvents() {

@@ -46,12 +46,19 @@ public class PoorbetSecurityAutoConfiguration {
     @Order(Ordered.HIGHEST_PRECEDENCE)
     @ConditionalOnMissingBean(name = "internalSecurityFilterChain")
     public SecurityFilterChain internalSecurityFilterChain(HttpSecurity http,
+                                                           PoorbetSecurityProperties properties,
                                                            JwtAuthenticationConverter jwtAuthenticationConverter,
                                                            AuthorizationManager<RequestAuthorizationContext> internalAuthorizationManager) throws Exception {
         http
                 .securityMatcher("/internal/**")
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.anyRequest().access(internalAuthorizationManager))
+                .authorizeHttpRequests(auth -> {
+                    if (!properties.getUnprotectedPaths().isEmpty()) {
+                        auth.requestMatchers(properties.getUnprotectedPaths().toArray(new String[0])).permitAll();
+                    }
+                    auth.requestMatchers("/internal/**").access(internalAuthorizationManager);
+                    auth.anyRequest().authenticated();
+                })
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter))
                 );

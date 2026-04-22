@@ -11,10 +11,20 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class ServiceJwtForwardingFilter implements ExchangeFilterFunction {
 
+    public static final String SKIP_AUTH = "SKIP_AUTH";
+
     private final ServiceTokenProvider serviceTokenProvider;
 
     @Override
     public Mono<ClientResponse> filter(ClientRequest request, ExchangeFunction next) {
+        boolean skip = request.attribute(SKIP_AUTH)
+                .map(Boolean.class::cast)
+                .orElse(false);
+
+        if (skip) {
+            return next.exchange(request);
+        }
+
         String token = serviceTokenProvider.getServiceToken();
 
         ClientRequest newRequest = ClientRequest.from(request)
