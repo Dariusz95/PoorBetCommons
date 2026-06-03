@@ -1,4 +1,4 @@
-package com.poorbet.commons.rabbit.events.user;
+package com.poorbet.commons.rabbit.events.auth;
 
 import java.util.UUID;
 

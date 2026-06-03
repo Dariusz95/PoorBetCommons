@@ -15,8 +15,6 @@ public class MessagingProperties {
 
     private String sourceService;
 
-    private Map<String, String> exchanges;
-
     private Map<EventKey, ConsumerConfig> consumers;
 
     @Getter
