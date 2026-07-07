@@ -1,10 +1,11 @@
 package com.poorbet.commons.rabbit.events.wallet;
 
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.UUID;
 
 public record WalletBalanceChangedEvent(
-        UUID userId,
-        BigDecimal balance
+        @NotNull UUID userId,
+        @NotNull BigDecimal balance
 ) {
 }
