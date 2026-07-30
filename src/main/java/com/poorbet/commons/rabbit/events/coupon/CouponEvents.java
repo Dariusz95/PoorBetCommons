@@ -23,5 +23,4 @@ public class CouponEvents {
                     "v1"
             );
 
-
 }

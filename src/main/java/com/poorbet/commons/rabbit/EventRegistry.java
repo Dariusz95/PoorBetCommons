@@ -1,5 +1,6 @@
 package com.poorbet.commons.rabbit;
 
+import com.poorbet.commons.rabbit.events.account.AccountEvents;
 import com.poorbet.commons.rabbit.events.coupon.CouponEvents;
 import com.poorbet.commons.rabbit.events.match.MatchEvents;
 import com.poorbet.commons.rabbit.events.auth.AuthEvents;
@@ -19,7 +20,8 @@ public class EventRegistry {
             EventKey.MATCH_FINISHED, MatchEvents.MATCH_FINISHED,
             EventKey.COUPON_CREATION_FAILED, CouponEvents.COUPON_CREATION_FAILED,
             EventKey.COUPON_WON, CouponEvents.COUPON_WON,
-            EventKey.COUPON_LOST, CouponEvents.COUPON_LOST
+            EventKey.COUPON_LOST, CouponEvents.COUPON_LOST,
+            EventKey.ACCOUNT_PROGRESS_CHANGED, AccountEvents.ACCOUNT_PROGRESS_CHANGED
     );
 
     public EventDefinition<?> get(EventKey key) {

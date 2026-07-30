@@ -9,6 +9,7 @@ public record CouponWonEvent(
         @NotNull UUID couponId,
         @NotNull UUID reservationId,
         @NotNull UUID userId,
-        @NotNull @DecimalMin("0.01") BigDecimal amount
+        @NotNull @DecimalMin("0.01") BigDecimal amount,
+        @NotNull @DecimalMin("1.00") BigDecimal stake
 ) {
 }

@@ -104,10 +104,13 @@ Wspólny format przesyłania zdarzeń między mikroserwisami.
 
 Zawiera:
 
+* eventId
 * eventType
 * version
 * source
 * payload
+
+`eventId` to unikalny identyfikator konkretnej publikacji zdarzenia — wykorzystywany przez konsumentów do idempotencji (tabela `processed_event`, sprawdzana przed przetworzeniem, żeby ta sama dostawa RabbitMQ nie została przetworzona dwa razy). Dla zdarzeń publikowanych przez Outbox Pattern jako `eventId` używane jest `id` rekordu `outbox_event`; dla publikacji bezpośrednich (`RabbitDomainEventPublisher`) generowany jest nowy losowy UUID przy każdym wywołaniu `publish()`.
 
 ### EventKey
 
